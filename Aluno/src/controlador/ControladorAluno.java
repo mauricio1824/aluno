@@ -7,7 +7,7 @@ package controlador;
 import dao.DaoAluno;
 import javax.swing.JOptionPane;
 import modelo.Aluno;
-import tela.manutencao.ManutencaoAluno
+import tela.manutencao.ManutencaoAluno;
         
 public class ControladorAluno {
     public static void inserir(ManutencaoAluno man){
