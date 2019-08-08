@@ -22,5 +22,29 @@ public class ControladorAluno {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
 }
-    
+    public static void alterar(ManutencaoAluno man){
+        Aluno objeto = new Aluno();
+        //definir todos os atributos
+        objeto.setCodigo(Integer.parseInt(man.jtfCodigo.getText()));
+        objeto.setNome(man.jtfNome.getText());
+        objeto.setSobrenome(man.jtfSobrenome.getText());
+        objeto.setSexo(man.jtfSexo.getText());
+        boolean resultado = DaoAluno.alterar(objeto);
+        if (resultado) {
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro!");
+        }
+    }
+     public static void excluir(ManutencaoAluno man){
+        Aluno objeto = new Aluno();
+        objeto.setCodigo(Integer.parseInt(man.jtfCodigo.getText())); //só precisa definir a chave primeira
+        
+        boolean resultado = DaoAluno.excluir(objeto);
+        if (resultado) {
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro!");
+        }
+    }
 }

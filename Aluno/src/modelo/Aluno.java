@@ -15,6 +15,11 @@ public class Aluno {
     private String sobrenome;
     private String sexo;
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -47,9 +52,5 @@ public class Aluno {
         this.sexo = sexo;
     }
 
-    @Override
-    public String toString() {
-        return "Aluno{" + "nome=" + nome + ", sobrenome=" + sobrenome + ", sexo=" + sexo + '}';
-    }
-    
+   
 }

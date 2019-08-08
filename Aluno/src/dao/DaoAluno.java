@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
 import modelo.Aluno;
 
 public class DaoAluno {
-     public static boolean inserir(Aluno objeto) {
+
+    public static boolean inserir(Aluno objeto) {
         String sql = "INSERT INTO aluno (nome, sobrenome, sexo) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
@@ -25,7 +26,8 @@ public class DaoAluno {
             return false;
         }
     }
-      public static void main(String[] args) {
+
+    public static void main(String[] args) {
         Aluno objeto = new Aluno();
         objeto.setNome("Carlos");
         objeto.setSobrenome("Hein");
@@ -35,6 +37,34 @@ public class DaoAluno {
             JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
         } else {
             JOptionPane.showMessageDialog(null, "Erro!");
+        }
+    }
+
+    public static boolean alterar(Aluno objeto) {
+        String sql = "UPDATE aluno SET nome = ?, sobrenome = ?, sexo = ? WHERE codigo=?";
+        try {
+            PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
+            ps.setString(1, objeto.getNome());
+            ps.setString(2, objeto.getSobrenome());
+            ps.setString(3, objeto.getSexo());
+            ps.setInt(4, objeto.getCodigo());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+      public static boolean excluir(Aluno objeto) {
+        String sql = "DELETE FROM aluno WHERE codigo=?";
+        try {
+            PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
+            ps.setInt(1, objeto.getCodigo());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            return false;
         }
     }
 }
